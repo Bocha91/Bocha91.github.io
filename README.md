@@ -1,2 +1,2 @@
 # KPYT.github.io
-Anything Different
+Anything Different (Всякое Разное UTF-8)
