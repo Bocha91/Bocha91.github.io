@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--  Version_2  -->
+<head>
+    <title>Браслет Безопасности работа с сетью</title>
+    <!--<meta http-equiv="refresh" content="0; URL='http://172.22.22.3'" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <link rel="stylesheet" href="style.css">
+<style>
+.img_wifi {text-align: center;}
+</style>
+<script>
+    function LoadOn(){}
+</script>
+</head>
+<body onload="LoadOn()">
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-body" style="left:210px">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1" rolle="main">
+                <div class="page-inner">
+                    <div class="search-plus" id="book-search-results">
+                        <div class="search-noresults">
+                            <section class="normal markdown-section">
+<h2 id="WorkNet">Работа в сети</h2>
+<p></p>
+<lu>GATE может работать в двух сетевых режимах:
+    <li>AP - режим в котором GATE создаёт свою Wifi сеть и работает в роли точки доступа. 
+        В этом режиме к GATE можно подключить другое устройство, например телефон или планшет для просмотра данных.
+        В этом режиме интернет не доступен.
+    </li>
+    <li>STA - режим когда GATE подключается к имеющейся Wifi сети. 
+        Если в этой Wifi сети есть выход в интернет то GATE сможет передать медицинские данные на медицинский сервер. 
+        Для просмотра данных подключитесь к медицинскому серверу. 
+        На встроенном сервере тоже можно просматривать данные если Вам удастся его найти в сети.
+    </li>
+    <li>
+        Также есть режим NW, когда отключается функции Wifi и GATE работает только со встроенным экраном.
+    </li>
+</lu>
+<br>
+<em>GATE - это коробка с экраном и кнопками см. <a href="#WiFi_GATE">Рисунок GATE</a>.</em>
+<br><br><br>
+<div class="img_wifi"><div id="WiFi_GATE">Рисунок GATE.</div><img src="images/Gate.png" alt="картинка GATE" width="400"></div>
+    
+<h3 id="parametrWiFi">Параметры сети WiFi</h3>
+<p>GATE поддерживает работу в сетях WiFi - 2.4ГГц  (<a target="_blank" href="https://ru.wikipedia.org/wiki/IEEE_802.11#802.11b/g/n">IEEE 802.11 b/g/n</a>)</p>
+
+<h3 id="selectMode">Переключение режимов</h3>
+
+<p>Режимы работы GATE переключаются при одновременном нажатии и удержании в течении 3 секунд кнопок 3 и 4.<br> 
+Переключение режимов происходит по кругу AP -> STA -> NW -> AP ...</p>
+
+<h3 id="InitMode">Индикация режимов</h3>
+<p>Режим работы WiFi отображается на индикаторе символами 6 или 7, см. <a href="#WiFi_1a">Рисунок 1</a>.
+    <ul>
+        <li>AP  - моргает или горит постоянно символ 7</li>
+        <li>STA - моргает или горит постоянно символ 6</li>
+        <li>NW  - погашены оба символа</li>
+    </ul>
+</p>
+<div class="img_wifi"><div id="WiFi_1a">Рисунок 1.</div>
+<img src="images/LCD_2.png" alt="картинка" width="400" >
+</div>
+
+
+<h3 id="ModeAP">Использование GATE в режиме AP</h3>
+<p>
+    В режиме AP в списке доступных сетей на вашем телефоне или планшете появится сеть с именем <b>homehub-X..</b>.
+    Где X.. - это <a target="_blank" href="https://ru.wikipedia.org/wiki/MAC-%D0%B0%D0%B4%D1%80%D0%B5%D1%81">MAC-адрес</a> Вашего экземпляра GATE. 
+    У каждого GATE свой номер. Например:
+    <pre>
+    homehub-80F04619325D</pre>
+</p>
+<p>Выберите эту сеть для подключения. Пароль в сети 12345678</p>
+<p>Запустите браузер на вашем планшете или что там у Вас есть. Хорошо чтобы браузер был Chrome и посвежее.<br> 
+В поле ввода <a target="_blank" href="https://ru.wikipedia.org/wiki/URL">URL</a> наберите 
+<a target="_blank" href="https://ru.wikipedia.org/wiki/IP-%D0%B0%D0%B4%D1%80%D0%B5%D1%81">IP адрес</a> GATE:<br>
+    <pre>
+    192.168.1.1</pre>
+</p>
+<p>Откроется страница встроенного  WEB сервера GATE,  см.<a href="#WiFi_1">Рисунок 2</a>. 
+    На странице могут содержаться данные, если к GATE уже подключены датчики и они работают, как на <a href="#WiFi_2">Рисунок 3</a>.</p>
+<div class="img_wifi"><div id="WiFi_1">Рисунок 2.</div><img src="images/WiFi_20.png" alt="картинка WiFi_1"  ></div>
+<em> ПРИМЕЧАНИЕ: 
+    Все медицинские данные показанные на рисунках в этом документе, получены на стендовом оборудовании, а не с пациента.
+</em>
+<div class="img_wifi"><div id="WiFi_2">Рисунок 3.</div><img src="images/WiFi_19b.png" alt="картинка WiFi_12"  ></div>
+
+<br>
+<p>В режиме AP данные не передаются на сервер и следовательно ваш лечащий врач и его коллеги или ваши близкие
+    не имеют возможность удалённо и оперативно наблюдать изменение вашего состояния здоровья. 
+    Если Вам требуется их помощь то имеется возможность транслировать данные с Вашего GATE на медицинский сервер.
+    Чтобы обеспечить эту возможность нужно указать адрес медицинского сервера и затем перевести GATE в режим STA.
+</p>
+
+
+<h3 id="WN001">Как указать адрес медицинского сервера</h3>
+<p>Это лучше сделать в режиме AP (в режиме STA это делается также, но тогда нужно узнать какой 
+    присвоен IP адрес GATE в сети куда Вы его подключили, что может быть не легко). </p>
+
+<ol>Чтобы указать адрес медицинского сервера Вам нужно:
+    <li >Включить ражим AP и зайдите на встроенный WEB сервера GATE (<a href="#ModeAP">см. выше 1</a> , <a href="#selectMode">см. выше 2</a>).</li>
+    <li >В верхнем правом углу страницы нажмите на значок шестерёнки, это настройки для GATE.</li>
+    <li >Перейдите к вкладке ( Сервер ) см. <a href="#WiFi_7">Рисунок 9</a>.</li>
+    <li >В поле URL: и Port: указан текущий адрес и порт медицинского сервера, и если они уже совпадают с требуемым 
+        то ничего делать не надо переходите к пункту 10.</li>
+    <li >Введите новый адрес медицинского сервера в поле Новый URL:. Будьте внимательны, если вы ошибётесь GATE не найдёт медицинский сервер 
+        и не сможет передавать данные.</li>
+    <li >Если требуется, измените порт в поле Новый Port:. Та-же хрень, будьте внимательны ... </li>
+    <li >Когда оба поля (Новый URL: и Новый Port:) содержат данные разблокируется кнопка "Сохранить изменения".</li>
+    <li >Нажмите "Сохранить изменения".</li>
+    <li >Вы увидите что поля (URL: Port:) изменят свои значения на введённые  Вами.</li>
+    <li>Чтобы закрыть вкладки установок нажмите на Close снизу справа под вкладками или на тёмном поле поодаль от вкладок. :)</li>
+    <li><a href="#ModeSTA">Переключите GATE в режим STA как описано ниже.</a></li>
+</ol>
+ <div class="img_wifi"><div id="WiFi_7">Рисунок 9.</div><img src="images/WiFi_15.png" alt="картинка WiFi_7"  ></div>
+
+
+ 
+
+<h3 id="ModeSTA">Использование GATE в режиме STA</h3>
+<p>Вам понадобится подключиться к WiFi сети с доступом в интернет.  
+    <ol>Чтобы добавить сеть для подключения и указать пароль доступа к ней Вам нужно:
+        <li >Включить ражим AP и зайдите на встроенный WEB сервера GATE (<a href="#ModeAP">см. выше 1</a> , <a href="#selectMode">см. выше 2</a>). </li>
+        <li >В верхнем правом углу страницы нажмите на значок шестерёнки, это настройки для GATE.</li>
+        <li >Перейдите к вкладке ( + WiFi ) см. <a href="#WiFi_3">Рисунок 4</a>.</li>
+        <li >Выберете из списка желаемую для подключения сеть, как на <a href="#WiFi_4">Рисунок 5</a> или наберите имя сети в поле SSID:</li>
+        <li >Измените тип защиты если требуется</li>
+        <li >В поле Security Key: введите пароль для подключения к сети</li>
+        <li >Также можно выбрать приоритет для подключения, если Вы указываете несколько сетей.</li>
+        <li >После заполнения всех полей станет доступна кнопка Add см. <a href="#WiFi_5">Рисунок 6</a>. </li>
+        <li >Нажмите кнопку Add.</li>
+        <li >Убедиться что сеть добавилась в список подключения можно на следующей вкладке ( - WiFi ) см. <a href="#WiFi_6">Рисунок 7</a>. 
+        Однако наличие в списке не гарантирует что подключение состоится!
+        Если Вы что-то указали с ошибкой или нет связи. Чтобы исправит удалите и введите правильно. 
+        Как удалить см.ниже.
+        <a href="#ModeSTAdel">Как удалить сеть из списка подключения</a></li>
+        <li>Чтобы закрыть вкладки установок нажмите на Close снизу справа под вкладками или на тёмном поле поодаль от вкладок :)</li>
+        <li>Теперь переключите режим на STA как описано в пункте 
+            <a href="#selectMode">Переключение режимов</a></li>
+
+    </ol>
+</p>
+<div class="img_wifi"><div id="WiFi_3">Рисунок 4.</div><img src="images/WiFi_3.png" alt="картинка WiFi_3"  ></div>
+<div class="img_wifi"><div id="WiFi_4">Рисунок 5.</div><img src="images/WiFi_4.png" alt="картинка WiFi_4"  ></div>
+<div class="img_wifi"><div id="WiFi_5">Рисунок 6.</div><img src="images/WiFi_5.png" alt="картинка WiFi_5"  ></div>
+
+<h3 id="ModeSTAdel">Как удалить сеть из списка подключения</h3>
+<p>Количество сетей в списке GATE, к которым он может подключаться: 7 сетей. Поэтому целесообразно не используемые сети удалять из списка. Для этого:</p>
+<ul>
+    <li>Отметьте для удаления строки с сетями которых желаете удалить. Сети которые нужно оставить не отмечайте. </li>
+    <li>Нажмите кнопку Удалить Выбранные Сети <a href="#WiFi_6">Рисунок 7</a></li>
+</ul>
+
+<div class="img_wifi"><div id="WiFi_6">Рисунок 7.</div><img src="images/WiFi_6.png" alt="картинка WiFi_6"  ></div>
+
+<h3 id="IP_GATE">Как узнать какой IP выдала GATE сеть</h3>
+<ul>
+    <li>Спросить у Системного администратора сети.</li>
+    <li>Посмотреть на 
+        <a target="_blank" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%82%D0%BE%D1%80">роутере</a>, 
+        который раздаёт IP в сети и за одно сделать IP статическим.</li>
+    <li>Поставить программу 
+        <a target="_blank" href="https://www.google.ru/search?newwindow=1&ei=MH2bW9nnNM_srgSSiK6wBA&q=Bonjour+mDNS&oq=Bonjour+mDNS&gs_l=psy-ab.3..0l3j0i22i10i30k1j0i22i30k1l6.6516.14586.0.14917.7.6.1.0.0.0.59.310.6.6.0....0...1c.1.64.psy-ab..0.7.310...0i67k1j0i10k1.0.2H5vODWP34M">
+        Bonjour</a> и тогда будет работать по имени <a target="_blank"href="http://homehub.local/">http://homehub.local/</a> только очень медленно. 
+        Браузер попытается перейти на адресацию по IP.</li>
+    <li>Самостоятельно присвоить IP (только квалифицированные системные администраторы, но они сами знают как это сделать)</li>
+    <li>Посмотреть каким был IP адрес GATE в режиме STA из режима AP и использовать его, надеясь что он в следующем сеансе связи не поменяется.
+        <ol>
+            <li >Включить ражим AP и зайдите на встроенный WEB сервера GATE (<a href="#ModeAP">см. выше 1</a> , <a href="#selectMode">см. выше 2</a>). </li>
+            <li >В верхнем правом углу страницы нажмите на значок шестерёнки, это настройки для GATE.</li>
+            <li >Перейдите к вкладке ( - WiFi ) см. <a href="#WiFi_6">Рисунок 7</a>.</li>       
+            <li>Нажмите на слово сеть, в заголовке таблички и вы увидете IP адрес GATE который был у него в 
+                последнем успешном сеансе подключения к WiFi сети.(см. <a href="#WiFi_14">Рисунок 8</a>)</li>
+        </ol>
+    </li>
+</ul>
+
+<p></p>
+<div class="img_wifi"><div id="WiFi_14">Рисунок 8.</div><img src="images/WiFi_14.png" alt="картинка WiFi_14"  ></div>
+
+
+
+
+<h3 id="GATE001">Отображение медицинской информации</h3>
+<p>Информация от датчика выводится в виде грачика и таблицы (см. <a href="#WiFi_9">Рисунок 9</a>).
+Если к GATE подключено несколько датчиков, то выбранный для отображения датчик подсвечен розовым. 
+На <a href="#WiFi_2">Рисунке 3</a> к GATE подключено 8 датчиков, это максимальное количество датчиков. 
+Кликните по номеру датчика, чтобы отобразить его данные в таблице и на графике.
+</p><p>
+Одна строка в таблице соответствует данным полученным в течении одной минуты от датчика. 
+В таблицу заносятся максимальное и минимальное значение за это время.
+Значения вызывавшие тревогу отображаются красным цветом. Пороги по которым будут срабатывать тревоги могут 
+быть установлены пользователем самостоятельно, как установить пороги смотрите в разделе <a href="#GATE02">Настройка отображения</a>
+Время и состояние аккумулятора датчика отображаются в первых двух колонках, 
+остальные колонки могут быть включены или отключены по желанию пользователя подробности смотрите в 
+разделе <a href="#GATE03">Установка порогов</a>.
+</p>
+<p>
+На графике можно отобразить до двух параметров одновременном. 
+Чтобы выбрать параметр, для отображения, нажмите на него в шапке таблицы, кроме <b>time, bat</b> и <b>alarms</b>, они не отображаются.
+Каждое следующее нажатие в шапке таблицы отменяет отображение левого графика, правый график становится левым.
+Правым станет нажатый. Левый график это график, ось Y которого показана в левой части графика. Правый соответственно с права.
+Если на параметр в шапке нажать дважды то останется один график. Красным цветом на графиках отображаются области вызвавшие тревогу.
+</p>
+
+<div class="img_wifi"><div id="WiFi_9">Рисунок 9.</div><img src="images/WiFi_21.png" alt="картинка WiFi_12"  ></div>
+
+<h3 id="GATE02">Настройка отображения</h3>
+<p>Отображением в таблице столбцов можно управлять, на вкладке "Отображение". 
+    Зелёные переключатели разрешают отображение в таблице соответствующего столбца, серые - отключают, см. <a href="#WiFi_8">Рисунок 8</a>.</p>
+<p></p>
+<div class="img_wifi"><div id="WiFi_8">Рисунок 8.</div><img src="images/WiFi_16.png" alt="картинка WiFi_2"  ></div>
+
+<h3 id="GATE03">Установка порогов</h3>
+<p>На вкладке "Пороги", можно установить уровни при которых будут срабатывать тревоги, см. <a href="#WiFi_19">Рисунок 10</a>.</p>
+
+    <ul>Для каждого параметра два уровня тревоги:
+<li><b>max</b> - если параметр привысит это значение, будет тревога</li>
+<li><b>min</b> - если параметр станет меньше этого значения, будет тревога</li>
+</ul>
+<em>
+Примечание: В отличии от вкладки "Отображение" вкладка "Пороги" работает с тем датчиком, который был предварительно выбран на основном экране,
+ его номер розовеет в верхней части вкладки "Пороги".
+</em>
+<div class="img_wifi"><div id="WiFi_19">Рисунок 10.</div><img src="images/WiFi_8.png" alt="картинка WiFi_8"  ></div>
+<p>Выбрать параметр для которого будут устанавливаться уровни можно в выпадающем меню, см. <a href="#WiFi_109">Рисунок 11</a>.
+    В этом списке отображаются только те параметры, отображение которых разрешено на вкладке "Отображение",см. <a href="#WiFi_8">Рисунок 8</a>.
+</p>
+<div class="img_wifi"><div id="WiFi_109">Рисунок 11.</div><img src="images/WiFi_9.png" alt="картинка WiFi_9"  ></div>
+<p>Введите в поля max и min требуемые Вам значения и нажмите кнопку "Set", чтобы они отправились в датчик, см. <a href="#WiFi_110">Рисунок 12</a>.
+   Реагируя на нажатие кнопку "Set" поля ввода посереют, давая Вам понять что данные отправлены, см. <a href="#WiFi_111">Рисунок 13</a>.
+</p><p>
+    Однако доберутся ли пороги до датчика, зависит от возможности связи с датчиком и конструкционных возможностей датчика.
+</p>  
+<p>Также можно отменить контроль порогов выбранного параметра. Для этого после кго выбора нажмите кнопку "Clear" и в датчик пойдёт 
+    информация что для данного параметра не нужно контролировать пороги.</p>
+<div class="img_wifi"><div id="WiFi_110">Рисунок 12.</div><img src="images/WiFi_10.png" alt="картинка WiFi_10"  ></div>
+<div class="img_wifi"><div id="WiFi_111">Рисунок 13.</div><img src="images/WiFi_11.png" alt="картинка WiFi_11"  ></div>
+<p>Если вы ошиблись а поля ввода max и min заблокированы, выберете другой параметр, а потом вернитесь к прежнему или переключите вкладки.</p>
+
+<h3 id="GATE04">"Помойка"</h3>
+<p>Маленькая чёрная "помойка" в верхнем правом углу вкладки "Пороги", см. <a href="#WiFi_111">Рисунок 13</a>, 
+    предназначена для удаления запомненных данных от датчика и полезна при передаче датчика другому пациенту...</p>
+    
+<h3 id="GATE05">Не защищено</h3>
+<p>Такая надпись в браузере появляется когда страница использует протокол HTML без шифрования. 
+    Передаваемые Вами данные в GATE не шифруются.</p>
+<p>Единственный момент когда Ваши данные могут подвергнутся опасности 
+    - это когда Вы вводите пароль для подключения к сети Wifi см. <a href="#WiFi_3">Рисунок 4</a>.
+    И то, если Вы подключены к сети WiFi в режиме STA, и к этой сети WiFi имеют доступ люди, которым Вы не доверяете.</p>
+<div class="img_wifi"><div id="WiFi_22">Рисунок 10.</div><img src="images/WiFi_22.png" alt="картинка WiFi_22"  ></div>
+<p>GATE совместим со многими современными браузерами, но в основном проверялся на Google Chrome Версия 70.0.3538.102 (Официальная сборка), Windows 10(64 бит).
+В 2018 году. Если у Вас возникают проблемы в работе GATE с вашим браузером, возможно это проблемы совместимости браузеров, попробуйте использовать Chrome.
+</p>
+
+                            </section>
+                        </div>
+                    </div>
+                    <div class="search-results">
+                    <div class="has-results">
+                        <h1 class="search-results-title">
+                            <span class="search-results-count"></span> 
+                            <span class="search-query"></span>
+                        </h1>
+                        <ul class="search-results-list"></ul>
+                    </div>
+                    <div class="no-results">
+                        <!--<h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>-->
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div> 
+
+<!--  //////////////////////////////////////////////////////////////////////////////////////  -->
+
+    <div class="book-summary" style="width:210px">
+        <div id="book-search-input" role="search">
+<!--            <input type="text" placeholder="Type to search"> -->
+        </div>
+        <nav role="navigation">
+        <ul class="summary">
+            <li class="chapter" data-level="1.1" data-path="./">
+                <a href="#WorkNet">Работа в сети</a>
+                <ul class="articles">
+                    <li class="chapter " data-level="1.1.1" data-path="getting-started/">
+                        <a href="#selectMode">Переключение<br> режимов</a>
+                    <li class="chapter " data-level="1.2" data-path="getting-started/installation.html">
+                        <a href="#InitMode">Индикация режимов</a>
+                    </li>
+                    <li class="chapter " data-level="1.1.2" data-path="getting-started/integration.html">
+                        <a href="#ModeAP">Использование GATE<br> в режиме AP</a>
+                    </li>
+                    <li class="chapter " data-level="1.1.2" data-path="getting-started/integration.html">
+                        <a href="#WN001">Как указать адрес<br> медицинского сервера</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.3" data-path="getting-started/usage.html">
+                        <a href="#ModeSTA">Использование GATE<br> в режиме STA</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.4" data-path="getting-started/usage.html">
+                        <a href="#ModeSTAdel">Как удалить сеть<br> из списка подключения</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.4" data-path="getting-started/usage.html">
+                        <a href="#IP_GATE">Как узнать какой IP<br> выдала сеть GATE </a>
+                    </li>
+                </ul>
+            </li>         
+
+            <li class="chapter " data-level="1.2" data-path="axes/">
+                <a href="#GATE001">Отображение медицинской<br> информации</a>
+                <ul class="articles">
+                    <li class="chapter " data-level="1.2.1" data-path="axes/labelling.html">
+                        <a href="#GATE02">Настройка<br> отображения</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.2" data-path="axes/styling.html">
+                        <a href="#GATE03">Установка порогов</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.3" data-path="axes/styling.html">
+                        <a href="#GATE04">"Помойка"</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.3" data-path="axes/styling.html">
+                        <a href="#GATE05">Не защищено</a>
+                    </li>
+                    <!--
+                    <li class="chapter " data-level="1.2.3" data-path="axes/labelling.html">
+                        <a href="#GATE04">Labelling</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.4" data-path="axes/styling.html">
+                        <a href="#GATE05">Styling</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.5" data-path="axes/cartesian/">
+                        <a href="axes/cartesian/">artesian</a>                            <ul class="articles">
+                            <li class="chapter " data-level="1.2.5.1" data-path="axes/cartesian/category.html">
+                                <a href="axes/cartesian/category.html">Category</a>
+                            </li>
+                            <li class="chapter " data-level="1.2.5.2" data-path="axes/cartesian/linear.html">
+                                <a href="axes/cartesian/linear.html">Linear</a>
+                            </li>
+                            <li class="chapter " data-level="1.2.5.3" data-path="axes/cartesian/logarithmic.html">
+                                <a href="axes/cartesian/logarithmic.html">Logarithmic</a>
+                            </li>
+                            <li class="chapter " data-level="1.2.5.4" data-path="axes/cartesian/time.html">
+                                <a href="axes/cartesian/time.html">Time</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="chapter " data-level="1.2.6" data-path="axes/radial/">
+                        <a href="axes/radial/">Radial</a>
+                        <ul class="articles">
+                            <li class="chapter " data-level="1.2.6.1" data-path="axes/radial/linear.html">
+                                <a href="axes/radial/linear.html">Linear</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="chapter " data-level="1.2.7" data-path="axes/labelling.html">
+                        <a href="axes/labelling.html">Labelling</a>
+                    </li>
+                    <li class="chapter " data-level="1.2.8" data-path="axes/styling.html">
+                        <a href="axes/styling.html">Styling</a>
+                    </li> -->
+                </ul>
+            </li>
+
+            <li class="divider"></li>
+            <li>
+                <a href="https://bocha91.github.io/" target="blank" class="gitbook-link">Published with GitBook</a>
+            </li>
+        </ul>
+                        </nav>
+    </div>
+</div>
+</body>
+</html>
